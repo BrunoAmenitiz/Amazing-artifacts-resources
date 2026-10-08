@@ -1,0 +1,597 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Sales Product Days Takeaways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: the deck's language on a scrolling page — white ground, blue + yellow highlights, letter-spaced kickers, one card per stage of the hotelier journey */
+:root{
+  --bg:#ffffff; --ink:#1e2533; --muted:#5b6a82; --line:#e2ebf7;
+  --blue:#006aff; --blue-soft:#ebf3ff; --blue-mid:#cfe0fa;
+  --yellow:#ffd966; --yellow-soft:#fff6d9; --navy:#1e2533; --on-blue:#ffffff;
+  --display:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+/* Single light look on purpose, like the event slides */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);margin:0;font-size:16px;line-height:1.55}
+a{color:var(--blue)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+h1,h2,h3{margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(28px,4.4vw,44px);font-weight:800;line-height:1.05}
+h3{font-size:19px;font-weight:700}
+p{margin:0}
+.pill{display:inline-block;background:var(--yellow);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700}
+.pill.blue{background:var(--blue);color:var(--on-blue)}
+.pill.soft{background:var(--blue-soft);color:var(--blue)}
+
+/* Hero */
+.hero{background:var(--blue);color:var(--on-blue);position:relative;overflow:hidden}
+.hero .wrap{padding-block:clamp(36px,7vw,72px) clamp(40px,7vw,80px);position:relative;z-index:1}
+.hero .kicker{color:#cfe0ff}
+.hero h1{font-size:clamp(44px,8vw,92px);font-weight:900;line-height:.92;margin-top:14px}
+.hero h1 span{display:block}
+.hero .lead{max-width:34ch;font-size:clamp(18px,2.2vw,22px);margin-top:22px;color:#eaf2ff}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.hero .meta span.txt{color:#eaf2ff;font-weight:500}
+.hero .halo{position:absolute;left:-120px;top:-160px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero .ami{position:absolute;right:-30px;bottom:-60px;width:clamp(240px,34vw,420px);z-index:0}
+.hero .ami-blink{transform-origin:115px 86px;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+
+/* Sticky nav */
+nav.stages{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.stages .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.stages a{flex:none;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.stages a:hover,nav.stages a.on{background:var(--blue-soft);color:var(--blue)}
+nav.stages a b{color:var(--blue);margin-right:4px}
+
+section{padding-block:clamp(40px,6vw,72px)}
+section+section{border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:760px}
+.sec-head .lede{font-size:clamp(17px,2vw,20px);color:var(--muted)}
+
+/* Journey */
+.journey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.jcard{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);border:1.5px solid var(--line);border-radius:18px;padding:16px;transition:border-color .15s,transform .15s;min-width:0}
+.jcard:hover{border-color:var(--blue);transform:translateY(-2px)}
+.jcard .num{font-size:28px;font-weight:900;color:var(--blue);line-height:1}
+.jcard .t{font-weight:700;font-size:16px;line-height:1.2}
+.jcard .s{font-size:13px;color:var(--muted)}
+.jcard .who{margin-top:auto;font-size:12px;font-weight:600;color:var(--muted)}
+.jcard .ph{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.phase{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
+.phase::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* Goal banner */
+.goal{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--yellow-soft);border-radius:22px;padding:22px 26px;margin-top:28px}
+.goal .big{font-size:clamp(20px,2.6vw,26px);font-weight:800;line-height:1.2}
+.goal svg{width:76px;height:auto}
+
+/* Stage block */
+.stage-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start}
+.stage-num{font-size:clamp(64px,10vw,120px);font-weight:900;line-height:.8;color:var(--blue-soft);-webkit-text-stroke:2px var(--blue)}
+.idea{font-size:clamp(20px,2.4vw,24px);font-weight:700;line-height:1.3;max-width:46ch;margin-top:14px}
+.idea mark{background:linear-gradient(transparent 58%,var(--yellow) 58%);color:inherit;padding:0 2px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px}
+.card{border:1.5px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.card h3{margin-bottom:10px}
+.card.soft{background:var(--blue-soft);border-color:transparent}
+ul.clean{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.clean li{padding-left:22px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+ul.clean li b{font-weight:700}
+.saydont{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1.5px solid var(--line);border-radius:18px;overflow:hidden;margin-top:16px}
+.saydont>div{padding:18px 20px;min-width:0}
+.saydont .say{background:var(--blue-soft)}
+.saydont .lab{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.saydont .say .lab{color:var(--blue)}
+.saydont .dont .lab{color:var(--muted)}
+.saydont p+p{margin-top:12px;padding-top:12px;border-top:1px dashed var(--blue-mid)}
+.saydont .dont p+p{border-top-color:var(--line)}
+.saydont .dont p{color:var(--muted)}
+.tough{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;background:var(--navy);color:#fff;border-radius:20px;padding:22px 24px;margin-top:16px}
+.tough .q{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+.tough .ask{font-size:18px;font-weight:700;margin-top:6px}
+.tough .ans{margin-top:8px;color:#d7e2f2}
+.tough .icon{width:44px;height:44px;border-radius:12px;background:var(--yellow);display:grid;place-items:center;font-size:22px}
+.owner{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-top:14px}
+.owner b{color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+.tbl{overflow-x:auto;border:1.5px solid var(--line);border-radius:18px}
+th{text-align:left;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:12px 16px;background:#f7faff;border-bottom:1.5px solid var(--line)}
+td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:700}
+
+/* Status map */
+.status{display:grid;grid-template-columns:140px repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.status .h{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 4px}
+.status .r{font-weight:700;padding:14px 4px}
+.status .c{border-radius:14px;padding:12px 14px;font-size:14px;min-width:0}
+.status .now{background:var(--blue);color:#fff}
+.status .imm{background:var(--yellow)}
+.status .fut{background:#f2f5fa;color:var(--muted)}
+.status .empty{background:transparent;border:1.5px dashed var(--line)}
+
+/* Numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.num-t{border-radius:18px;padding:18px;background:var(--blue-soft);min-width:0;display:flex;flex-direction:column;gap:4px}
+.num-t:nth-child(4n+2),.num-t:nth-child(4n+7){background:var(--yellow-soft)}
+.num-t .v{font-size:clamp(24px,3vw,32px);font-weight:900;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums}
+.num-t .l{font-size:14px;font-weight:600}
+.num-t .s{font-size:12px;color:var(--muted);margin-top:auto;padding-top:6px}
+
+/* Traps */
+.traps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trap{border:1.5px solid var(--line);border-radius:18px;padding:16px 18px;min-width:0}
+.trap .no{color:var(--muted);text-decoration:line-through;text-decoration-color:#e5484d;text-decoration-thickness:2px;font-size:15px}
+.trap .yes{margin-top:8px;font-weight:600}
+.trap .yes::before{content:"✓ ";color:var(--blue);font-weight:900}
+
+/* Quiz */
+.qtools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+button{font:inherit;font-weight:700;font-size:14px;border-radius:999px;padding:9px 16px;border:1.5px solid var(--line);background:#fff;color:var(--blue);cursor:pointer}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+button:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.quiz{display:flex;flex-direction:column;gap:10px}
+.qi{border:1.5px solid var(--line);border-radius:16px;padding:14px 18px;display:grid;grid-template-columns:36px minmax(0,1fr);gap:4px 14px;cursor:pointer}
+.qi .n{grid-row:span 2;width:32px;height:32px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:14px}
+.qi .qq{font-weight:600}
+.qi .aa{color:var(--muted);font-size:15px}
+.qi .aa .hint{color:var(--blue);font-weight:700;font-size:13px}
+.qi .aa .ans b{color:var(--ink)}
+.qi.open{border-color:var(--blue)}
+.qi .ans{display:none}.qi.open .ans{display:block}.qi.open .hint{display:none}
+
+footer{background:var(--blue-soft);padding-block:40px}
+footer .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.steps li{list-style:none}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check i{flex:none;width:20px;height:20px;border-radius:6px;border:2px solid var(--blue);margin-top:3px}
+
+@media (max-width:820px){
+  .journey{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols,.saydont,.traps,footer .wrap{grid-template-columns:minmax(0,1fr)}
+  .status{grid-template-columns:minmax(0,1fr)}
+  .status .h:not(:first-child){display:none}
+  .status .r{padding-bottom:0}
+  .status .c::before{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:4px;content:attr(data-col)}
+  .stage-num{display:none}
+  .stage-top{grid-template-columns:minmax(0,1fr)}
+  .goal{grid-template-columns:minmax(0,1fr)}
+  .hero .ami{opacity:.35}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.ami-blink{animation:none}.jcard{transition:none}}
+</style>
+
+<header class="hero">
+  <div class="halo" aria-hidden="true"></div>
+  <svg class="ami" viewBox="0 0 230 160" aria-hidden="true">
+    <ellipse cx="190" cy="16" rx="17" ry="11" fill="#ffd966"/>
+    <ellipse cx="115" cy="98" rx="115" ry="78" fill="#ffffff"/>
+    <g class="ami-blink">
+      <g fill="#006aff"><circle cx="78" cy="92" r="26"/><circle cx="152" cy="92" r="26"/></g>
+      <g fill="#ffffff"><circle cx="78" cy="92" r="16"/><circle cx="152" cy="92" r="16"/></g>
+      <g fill="#006aff"><circle cx="78" cy="92" r="8.5"/><circle cx="152" cy="92" r="8.5"/><rect x="75" y="73" width="6" height="11"/><rect x="75" y="100" width="6" height="11"/><rect x="149" y="73" width="6" height="11"/><rect x="149" y="100" width="6" height="11"/></g>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="kicker">Amenitiz · Sales enablement</div>
+    <h1><span>Sales</span><span>Product Days</span></h1>
+    <p class="lead">Your key takeaways. Pitch the whole hotelier journey with confidence, and only promise what's live.</p>
+    <div class="meta"><span class="pill">Day 1 + Day 2</span><span class="txt">Monday 5 – Tuesday 6 October 2026</span></div>
+  </div>
+</header>
+
+<nav class="stages" aria-label="Sections">
+  <div class="wrap">
+    <a href="#journey">Journey</a>
+    <a href="#s0"><b>00</b>Hoteliers</a>
+    <a href="#s1"><b>01</b>Fill my rooms</a>
+    <a href="#s2"><b>02</b>Get paid</a>
+    <a href="#s3"><b>03</b>Talk to guests</a>
+    <a href="#s4"><b>04</b>Run the stay</a>
+    <a href="#s5"><b>05</b>Sell more</a>
+    <a href="#s6"><b>06</b>Close the books</a>
+    <a href="#s7"><b>07</b>Know my business</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#traps">Traps</a>
+    <a href="#quiz">Exam review</a>
+    <a href="#challenge">Owner's Challenge</a>
+  </div>
+</nav>
+
+<main>
+<section id="journey"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker">The narrative</div>
+    <h2>The hotelier journey</h2>
+    <p class="lede">Eight stages, from the first booking to the year-end numbers. Each one has its own card below, always in the same order: the big idea, what to show, what to say and not say, and the toughest question.</p>
+  </div>
+  <div class="journey">
+    <a class="jcard" href="#s0"><span class="ph">Start here</span><span class="num">00</span><span class="t">Meet our hoteliers</span><span class="s">Who they are and how to read them</span><span class="who">Ask Marco</span></a>
+    <a class="jcard" href="#s1"><span class="ph">Before the stay</span><span class="num">01</span><span class="t">Fill my rooms</span><span class="s">Channel manager, website, Boost, booking engine</span><span class="who">Ask Marco</span></a>
+    <a class="jcard" href="#s2"><span class="ph">Before the stay</span><span class="num">02</span><span class="t">Secure the booking & get paid</span><span class="s">AmenitizPay</span><span class="who">Ask Giulio</span></a>
+    <a class="jcard" href="#s3"><span class="ph">During the stay</span><span class="num">03</span><span class="t">Talk to my guests</span><span class="s">Conversations, WhatsApp, Ami</span><span class="who">Ask Donal</span></a>
+    <a class="jcard" href="#s4"><span class="ph">During the stay</span><span class="num">04</span><span class="t">Run the stay</span><span class="s">Core PMS, groups, split bills</span><span class="who">Ask Donal</span></a>
+    <a class="jcard" href="#s5"><span class="ph">During the stay</span><span class="num">05</span><span class="t">Sell more on-site</span><span class="s">Extras, upsell, POS</span><span class="who">Ask Tiago</span></a>
+    <a class="jcard d2" href="#s6"><span class="ph">After the stay</span><span class="num">06</span><span class="t">Close the books & compliance</span><span class="s">Invoicing, fiscal certification</span><span class="who">Ask Giulio</span></a>
+    <a class="jcard d2" href="#s7"><span class="ph">After the stay</span><span class="num">07</span><span class="t">Know how my business is doing</span><span class="s">Reports & performance</span><span class="who">Ask Marco</span></a>
+  </div>
+  <div class="goal">
+    <svg viewBox="0 0 230 160" aria-hidden="true"><ellipse cx="190" cy="16" rx="17" ry="11" fill="#ffd966"/><ellipse cx="115" cy="98" rx="112" ry="70" fill="#ffffff" stroke="#cfe0fa" stroke-width="5"/><g fill="#006aff"><circle cx="78" cy="92" r="26"/><circle cx="152" cy="92" r="26"/></g><g fill="#fff"><circle cx="78" cy="92" r="16"/><circle cx="152" cy="92" r="16"/></g><g fill="#006aff"><circle cx="78" cy="92" r="8.5"/><circle cx="152" cy="92" r="8.5"/></g></svg>
+    <p class="big">Sort the hotelier, show the journey as one story, and when you're not sure, say "I'll confirm that for you".</p>
+  </div>
+</div></section>
+
+<!-- 00 -->
+<section id="s0"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 00 · Meet our hoteliers</div>
+      <h2>Room count sets the price. Three cuts set the pitch.</h2>
+      <p class="idea">Two 22-room hotels can need completely different pitches. <mark>Place the hotelier before you pitch.</mark></p>
+    </div>
+    <div class="stage-num" aria-hidden="true">00</div>
+  </div>
+  <div class="tbl" style="margin-top:24px"><table>
+    <thead><tr><th>Cut</th><th>The options</th><th>What it changes</th><th>The question that sorts it</th></tr></thead>
+    <tbody>
+      <tr><td class="k">How they think about the work</td><td>Wants it handled · Wants to be in it · Wants the numbers</td><td>Which value you lead with. Pitch automation to "wants to be in it" and you lose the room.</td><td>"A booking lands at 2am. What happens next?"</td></tr>
+      <tr><td class="k">How independent they are</td><td>Truly independent · Small family group · Managed asset · Affiliated</td><td>Whether the deal is winnable at all, and who carries the fine when a filing is late</td><td>"Whose name is on the PMS contract?"</td></tr>
+      <tr><td class="k">How fixed the inventory is</td><td>Rooms that convert · Rooms + apartments · Winter long-stays · Rooms held back on purpose</td><td>Whether fixed room types break them</td><td>"Which of your rooms could be sold as something other than what they are today?"</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="card"><h3>Three more questions that get you a story</h3><ul class="clean">
+      <li><b>"Direct share last year, and two years ago?"</b> The direction tells you more than the number.</li>
+      <li><b>"Who changed your prices last, and when?"</b> Reveals a revenue function, or a PriceLabs licence nobody uses.</li>
+      <li><b>"Who sends the guest registrations, and what happens when it's late?"</b> Admin team, accountant, or the owner at midnight.</li>
+    </ul></div>
+    <div class="card soft"><h3>The one pain everyone shares</h3><p>Nobody wants trouble with the authorities. Police registration, tourist tax, the statistical return and certified invoices come up in every segment.</p><p style="margin-top:12px;color:var(--muted)">A franchise or brand may already have chosen the PMS. Nothing in the product changes that, so find out early.</p></div>
+  </div>
+  <div class="owner">Product owner: <b>Marco</b></div>
+</div></section>
+
+<!-- 01 -->
+<section id="s1"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 01 · Fill my rooms</div>
+      <h2>Every direct booking is the full price and a guest the hotel owns.</h2>
+      <p class="idea">An OTA booking costs 15–25% commission and the guest belongs to the OTA. <mark>Show it as one flow:</mark> get found with AmenitizBoost, convince with the website, convert with the booking engine.</p>
+    </div>
+    <div class="stage-num" aria-hidden="true">01</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>What to show</h3><ul class="clean">
+      <li><b>Website.</b> A module on top of Core and Advanced. Responsive, built to Google norms, page builder, AI-generated SEO texts, blog and custom domain. Edited without a developer.</li>
+      <li><b>Google Hotel free links.</b> The direct price on Google Search and Maps next to the OTAs, no commission. Needs a Google My Business sheet, the same name and address as in Amenitiz, an eligible property type and all direct rates active.</li>
+      <li><b>AmenitizBoost.</b> Fully managed ads on Google Search, Google Hotel Ads and Microsoft Ads. No setup, no ad spend, no agency fee: 12% only on confirmed bookings it brings.</li>
+    </ul></div>
+    <div class="card"><h3>&nbsp;</h3><ul class="clean">
+      <li><b>Booking engine.</b> Book and pay in three clicks, with rate plans, policies, promotions, extras and gift cards.</li>
+      <li><b>Channel control.</b> Room-type inventory control lets the hotel decide what each channel gets, for example some rooms on the website only.</li>
+      <li><b>Rates.</b> Derive the grid from the standard rate, so one price change moves every rate.</li>
+      <li><b>PriceLabs.</b> Two-way: we send booking data, PriceLabs sends prices back into the rates.</li>
+    </ul></div>
+  </div>
+  <div class="saydont">
+    <div class="say"><div class="lab">Say</div><p>"With AmenitizBoost, no bookings, no cost: you only pay 12% on what Boost brings."</p><p>"Room Link derives one level: we set up your most popular combination and you block the others by hand."</p></div>
+    <div class="dont"><div class="lab">Don't say</div><p>"You'll get at least 20% more bookings." Nobody can guarantee results.</p><p>"Room Link handles every combination of your cottages."</p></div>
+  </div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">"Can you guarantee more bookings?"</p><p class="ans">No. But Boost costs nothing until a booking comes in: no ad spend, no marketing skills needed, no risk.</p></div></div>
+  <div class="owner">Product owner: <b>Marco</b></div>
+</div></section>
+
+<!-- 02 -->
+<section id="s2"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 02 · Secure the booking & get paid</div>
+      <h2>The money arrives, even when the guest doesn't.</h2>
+      <p class="idea">AmenitizPay: <mark>1.4% + €0.25</mark> per transaction, no commission on direct bookings, no per-booking fee, no activation fee. Open the demo with Stripe Express onboarding: about a minute, and it answers what the identity check asks for and when money lands.</p>
+    </div>
+    <div class="stage-num" aria-hidden="true">02</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>What to show</h3><ul class="clean">
+      <li><b>Pre-authorisations,</b> held up to 30 days. Once released, a hold can't be captured again, so a late charge needs a fresh payment.</li>
+      <li><b>Automatic payment schedules,</b> for example 75% / 25%, up to three charges. They run on their own once set.</li>
+      <li><b>Payment links</b> for anything outside the schedule.</li>
+      <li><b>Daily payout,</b> €9.36 a month + VAT, for hotels worried about cash flow.</li>
+    </ul></div>
+    <div class="card soft"><h3>Objections you'll hear</h3><ul class="clean">
+      <li>Payouts are too slow for my cash flow.</li>
+      <li>The fee is higher than my bank's terminal.</li>
+      <li>I want to keep my own gateway or terminal.</li>
+    </ul></div>
+  </div>
+  <div class="saydont">
+    <div class="say"><div class="lab">Say</div><p>"The fee is the fee. Here's what it pays for: recovered no-shows, no reconciliation, no commission on direct."</p><p>"OTA virtual cards can't be pre-authorised, and Airbnb payments can't be automated."</p></div>
+    <div class="dont"><div class="lab">Don't say</div><p>Any discount. Change the conversation, not the price.</p><p>That every payment can be automated.</p></div>
+  </div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">"My bank charges me 0.8%. Why pay you more?"</p><p class="ans">Reframe on total cost: no-shows recovered, time saved matching receipts to bookings, and no commission on direct bookings.</p></div></div>
+  <div class="owner">Product owner: <b>Giulio</b></div>
+</div></section>
+
+<!-- 03 -->
+<section id="s3"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 03 · Talk to my guests</div>
+      <h2>Fragmented tools are our strongest wedge.</h2>
+      <p class="idea">Unified Inbox and Ami are live for everyone: <mark>demo them.</mark> The only prep: connect WhatsApp and fill in the hotel info so Ami has context.</p>
+    </div>
+    <div class="stage-num" aria-hidden="true">03</div>
+  </div>
+  <h3 style="margin-top:26px">The status map · if it isn't in "Now", don't promise it</h3>
+  <div class="status" role="table" aria-label="Conversations status map">
+    <div class="h" role="columnheader"></div><div class="h" role="columnheader">Now</div><div class="h" role="columnheader">Imminent</div><div class="h" role="columnheader">Future</div>
+    <div class="r">All plans</div><div class="c now" data-col="Now">Unified Inbox: Booking.com and Airbnb in one inbox, threaded by guest</div><div class="c empty" data-col="Imminent"></div><div class="c fut" data-col="Future">Expedia</div>
+    <div class="r">Advanced</div><div class="c now" data-col="Now">WhatsApp, with templates for the booking confirmation, the Chekin link and a prompt after 24h</div><div class="c imm" data-col="Imminent">Email</div><div class="c fut" data-col="Future">SMS, leads, more WhatsApp templates</div>
+    <div class="r">Ami</div><div class="c now" data-col="Now">Manual, Auto-suggest and Auto replies</div><div class="c empty" data-col="Imminent"></div><div class="c fut" data-col="Future">Translations, Actions</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>WhatsApp, explained honestly</h3><ul class="clean">
+      <li>Free-text messages cost <b>€0.02 each</b>, and the <b>first 1,000 a month are free.</b></li>
+      <li>More than 24 hours after the guest's last message, the hotel needs a template. <b>Meta bills templates directly,</b> not Amenitiz.</li>
+      <li>Templates can be scheduled, for example the Chekin check-in link before arrival.</li>
+      <li>To connect: a Meta Business account with admin access, a number that can receive a code, an approved display name and a payment method on Meta. Check what's on that number today first.</li>
+    </ul></div>
+    <div class="card soft"><h3>Ami: match the level to the hotelier</h3>
+      <ul class="clean">
+        <li><b>Manual.</b> The team clicks Generate, checks, edits and sends. <span style="color:var(--muted)">For "wants to be in it".</span></li>
+        <li><b>Auto-suggest.</b> The reply is ready; the team decides. <span style="color:var(--muted)">For "wants to be in it, but stretched".</span></li>
+        <li><b>Auto.</b> Ami replies on its own, even at 2am, signed "Sent by AI". <span style="color:var(--muted)">For "wants it handled".</span></li>
+      </ul>
+      <p style="margin-top:14px"><span class="pill blue">€3 / room / month</span> <span class="pill">€29 minimum</span> <span class="pill soft">14-day trial</span></p>
+      <p style="margin-top:8px;color:var(--muted);font-size:14px">A 32-room hotel pays €96 a month.</p>
+    </div>
+  </div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">"Upmarket.cloud has an AI chatbot. Do you?"</p><p class="ans">Yes: Ami, live today, at the level of control the owner wants.</p></div></div>
+  <div class="owner">Product owner: <b>Donal</b></div>
+</div></section>
+
+<!-- 04 -->
+<section id="s4"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 04 · Run the stay</div>
+      <h2>Win the room on a busy Saturday.</h2>
+      <p class="idea">The planning view and the manual booking are the most-used flows in the product. <mark>Demo them at real front-desk speed.</mark></p>
+    </div>
+    <div class="stage-num" aria-hidden="true">04</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>All live today</h3><ul class="clean">
+      <li><b>Planning and manual booking.</b> A full house, arrivals, departures and a group, then a phone booking step by step.</li>
+      <li><b>Move a guest to another room:</b> split the booking across the two rooms.</li>
+      <li><b>Remove a night:</b> the bill updates and checkout runs at real speed.</li>
+      <li><b>Groups:</b> one total price and one document. Fix the charges before the proforma.</li>
+    </ul></div>
+    <div class="card"><h3>&nbsp;</h3><ul class="clean">
+      <li><b>Split a bill</b> between guests sharing a room, on one stay.</li>
+      <li><b>Online check-in with Chekin,</b> included in every subscription. Reception sees the check-in status on the reservation.</li>
+      <li><b>Smart locks:</b> late arrivals get their door code, if the lock is supported. €2.49 per door per month.</li>
+      <li><b>Mobile app:</b> bookings and daily operations from the phone, several properties under one login.</li>
+    </ul></div>
+  </div>
+  <div class="saydont">
+    <div class="say"><div class="lab">Say</div><p>"Online check-in, plus a door code if your lock is supported."</p><p>"One total price and one document for the group."</p></div>
+    <div class="dont"><div class="lab">Don't say</div><p>"Our smart lock sends every guest a door code."</p><p>That the group's bookings are linked to each other.</p></div>
+  </div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">"I can't keep someone at reception all night for late arrivals."</p><p class="ans">Online check-in before arrival, plus a door code sent automatically if the lock is supported.</p></div></div>
+  <div class="owner">Product owner: <b>Donal</b></div>
+</div></section>
+
+<!-- 05 -->
+<section id="s5"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 05 · Sell more on-site</div>
+      <h2>Extras: be honest about today.</h2>
+      <p class="idea">Some competitors already sell extras online after booking. <mark>What prospects ask for shapes what we build next,</mark> so capture it.</p>
+    </div>
+    <div class="stage-num" aria-hidden="true">05</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>What we have today</h3><ul class="clean">
+      <li><b>Extras on the booking engine,</b> and rates that include breakfast.</li>
+      <li><b>Pre-arrival emails and messages</b> offering extras, so OTA guests can still buy breakfast or a late checkout.</li>
+      <li><b>Amenitiz POS</b> for the restaurant and bar, certified and sold in Spain and Portugal.</li>
+      <li><b>Bills outside reservations:</b> charge and invoice a local at lunch or a day visitor renting a bike, without a booking.</li>
+      <li><b>Restaurant POS integrations:</b> Ágora, Clyo, Lightspeed, 2bit and WinRest.</li>
+    </ul></div>
+    <div class="card soft"><h3>What restaurant owners told us matters</h3><ul class="clean">
+      <li>Staff on autopilot, with no extra friction.</li>
+      <li>Sending orders to the kitchen without leaving the table.</li>
+      <li>Knowing when stock runs low.</li>
+    </ul></div>
+  </div>
+  <div class="saydont">
+    <div class="say"><div class="lab">Say</div><p>"We don't integrate with that till today. We can study it, but I can't promise anything."</p><p>"Amenitiz POS is certified and sold in Spain and Portugal."</p></div>
+    <div class="dont"><div class="lab">Don't say</div><p>"We'll have it in a few months", or "then you'll have to switch to Amenitiz POS".</p><p>That it's available in France or Italy.</p></div>
+  </div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">"Can I use my own restaurant POS as a payment method inside Amenitiz POS?"</p><p class="ans">No. Charge it to a room booking, or mark it as paid outside Amenitiz.</p></div></div>
+  <div class="owner">Product owner: <b>Tiago</b></div>
+</div></section>
+
+<!-- 06 -->
+<section id="s6"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 06 · Close the books & compliance</div>
+      <h2>Certified where we say we are.</h2>
+      <p class="idea">Give one precise sentence per country. <mark>Edge cases get escalated, not improvised.</mark></p>
+    </div>
+    <div class="stage-num" aria-hidden="true">06</div>
+  </div>
+  <div class="tbl" style="margin-top:24px"><table>
+    <thead><tr><th>Market</th><th>Certified for</th><th>Simplified invoices</th></tr></thead>
+    <tbody>
+      <tr><td class="k">🇪🇸 Spain</td><td>Veri*Factu</td><td>Up to €3,000 gross</td></tr>
+      <tr><td class="k">🇫🇷 France</td><td>NF525</td><td></td></tr>
+      <tr><td class="k">🇮🇹 Italy</td><td>SDI and Effatta</td><td></td></tr>
+      <tr><td class="k">🇵🇹 Portugal</td><td>AT and Fatura-Recibo</td><td>Up to €1,000 gross</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div class="card"><h3>How invoicing works</h3><ul class="clean">
+      <li>The compliant invoice for a stay is <b>issued manually, on the check-out day.</b></li>
+      <li>Ground every answer in invoices and series, and in proforma versus invoice.</li>
+      <li><b>Accounting software:</b> no direct connection today, but it will be possible soon. Until then, the hotel can export its accounting entries as a file for its accountant.</li>
+    </ul></div>
+    <div class="card soft"><h3>Escalate, don't improvise</h3><ul class="clean">
+      <li>Registratore di cassa</li><li>Multi-account Veri*Factu</li><li>Autónomos</li><li>Properties without a partita IVA</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>Objections you'll hear</h3><ul class="clean">
+    <li><b>"Your invoicing can't handle my setup":</b> several VAT rates on one bill, split B2B and B2C, refunds and credit notes, deposits kept apart, self-invoices for foreign companies, choosing who the invoice is addressed to.</li>
+    <li><b>"It's too manual, and not integrated":</b> anything done outside Amenitiz, like sending e-invoices, an Excel summary for the accountant or uploads to government portals.</li>
+  </ul></div>
+  <div class="tough"><div class="icon" aria-hidden="true">🥊</div><div><div class="q">Toughest question</div><p class="ask">A compliance question you're not 100% sure about, and the deal is close.</p><p class="ans">Say you'll confirm with the compliance team and come back with a precise answer.</p></div></div>
+  <div class="owner">Product owner: <b>Giulio</b></div>
+</div></section>
+
+<!-- 07 -->
+<section id="s7"><div class="wrap">
+  <div class="stage-top">
+    <div>
+      <div class="kicker">Stage 07 · Know how my business is doing</div>
+      <h2>Show the numbers the owner already asks for.</h2>
+      <p class="idea">The "wants the numbers" hotelier opens with them: <mark>the channel split, what Booking.com really costs, and RevPAR against last year.</mark></p>
+    </div>
+    <div class="stage-num" aria-hidden="true">07</div>
+  </div>
+  <div class="cols">
+    <div class="card"><h3>Read the two numbers right</h3><ul class="clean">
+      <li><b>ADR</b> (average daily rate) = room revenue ÷ rooms actually sold. The average price a sold room went for.</li>
+      <li><b>RevPAR</b> = room revenue ÷ every room available, sold or not.</li>
+      <li>ADR up while total revenue goes down usually means <b>occupancy has dropped.</b></li>
+    </ul></div>
+    <div class="card soft"><h3>No forecast today</h3><p>There's no pace forecast. Show the comparison with the same period last year instead.</p></div>
+  </div>
+  <div class="saydont">
+    <div class="say"><div class="lab">Say</div><p>"There's no forecast, but you can compare this period with last year."</p></div>
+    <div class="dont"><div class="lab">Don't say</div><p>"The pace report forecasts where you'll land next month."</p></div>
+  </div>
+  <div class="owner">Product owner: <b>Marco</b></div>
+</div></section>
+
+<section id="numbers"><div class="wrap">
+  <div class="sec-head"><div class="kicker">Cheat sheet</div><h2>Every number in one place</h2></div>
+  <div class="nums">
+    <div class="num-t"><span class="v">15–25%</span><span class="l">OTA commission saved on a direct booking</span><span class="s">Stage 01</span></div>
+    <div class="num-t"><span class="v">12%</span><span class="l">AmenitizBoost, only on confirmed bookings it brings</span><span class="s">Stage 01</span></div>
+    <div class="num-t"><span class="v">1.4% + €0.25</span><span class="l">AmenitizPay per transaction</span><span class="s">Stage 02</span></div>
+    <div class="num-t"><span class="v">€0</span><span class="l">AmenitizPay commission on direct bookings</span><span class="s">Stage 02</span></div>
+    <div class="num-t"><span class="v">30 days</span><span class="l">Pre-authorisation hold</span><span class="s">Stage 02</span></div>
+    <div class="num-t"><span class="v">3 charges</span><span class="l">Automatic payment schedule, max</span><span class="s">Stage 02</span></div>
+    <div class="num-t"><span class="v">€9.36</span><span class="l">Daily payout, per month + VAT</span><span class="s">Stage 02</span></div>
+    <div class="num-t"><span class="v">€0.02</span><span class="l">WhatsApp free-text message, first 1,000 a month free</span><span class="s">Stage 03</span></div>
+    <div class="num-t"><span class="v">24 h</span><span class="l">WhatsApp reply window before a template is needed (billed by Meta)</span><span class="s">Stage 03</span></div>
+    <div class="num-t"><span class="v">€3 / room</span><span class="l">Ami per month, €29 minimum, 14-day trial</span><span class="s">Stage 03</span></div>
+    <div class="num-t"><span class="v">€2.49</span><span class="l">Smart locks, per door per month</span><span class="s">Stage 04</span></div>
+    <div class="num-t"><span class="v">€3,000 · €1,000</span><span class="l">Simplified invoice cap, Spain · Portugal</span><span class="s">Stage 06</span></div>
+  </div>
+</div></section>
+
+<section id="traps"><div class="wrap">
+  <div class="sec-head"><div class="kicker">Only promise what's live</div><h2>Traps to avoid</h2><p class="lede">These sound right and lose trust when the customer finds out. An honest "I'll confirm that for you" beats a confident wrong answer.</p></div>
+  <div class="traps">
+    <div class="trap"><p class="no">"Room Link handles every combination."</p><p class="yes">Room Link derives one level only. Set up the most popular combination and block the others by hand.</p></div>
+    <div class="trap"><p class="no">"We automate all your payments."</p><p class="yes">OTA virtual cards can't be pre-authorised, and Airbnb payments can't be automated.</p></div>
+    <div class="trap"><p class="no">"Capture the hold whenever you need."</p><p class="yes">Once a pre-authorisation is released, it can't be captured. A late charge needs a fresh payment.</p></div>
+    <div class="trap"><p class="no">"WhatsApp is free within 24 hours."</p><p class="yes">Free-text messages cost €0.02 each after the first 1,000 a month. Templates are billed by Meta.</p></div>
+    <div class="trap"><p class="no">"Ami translates guest messages."</p><p class="yes">Translations are on the roadmap, not live.</p></div>
+    <div class="trap"><p class="no">"You can answer emails from the inbox."</p><p class="yes">Email is imminent, not live.</p></div>
+    <div class="trap"><p class="no">"Expedia messages land in the inbox."</p><p class="yes">Expedia is on the roadmap.</p></div>
+    <div class="trap"><p class="no">"Every guest gets a door code."</p><p class="yes">Only if the hotel's lock is supported.</p></div>
+    <div class="trap"><p class="no">"Your restaurant POS works as a payment method."</p><p class="yes">It doesn't. Charge it to a room booking, or mark it as paid outside Amenitiz.</p></div>
+    <div class="trap"><p class="no">"Amenitiz POS works in your country."</p><p class="yes">It's certified and sold in Spain and Portugal only.</p></div>
+    <div class="trap"><p class="no">"We'll integrate your till in a few months."</p><p class="yes">We don't have it today. We can study it, but can't promise.</p></div>
+    <div class="trap"><p class="no">"The invoice goes out automatically."</p><p class="yes">The compliant invoice is issued manually, on the check-out day.</p></div>
+    <div class="trap"><p class="no">"We sync with Pennylane."</p><p class="yes">Not today, but it will be possible soon. Until then, the hotel exports a file for its accountant.</p></div>
+    <div class="trap"><p class="no">"The pace report forecasts next month."</p><p class="yes">There's no forecast. Compare with the same period last year.</p></div>
+    <div class="trap"><p class="no">"You'll get 20% more bookings."</p><p class="yes">No guarantee. Boost costs nothing until a booking comes in.</p></div>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <div class="sec-head"><div class="kicker">🎓 The Rainmaker's Accreditation</div><h2>Exam review</h2><p class="lede">The 15 questions from Tuesday. Try to answer each one, then click it to reveal the answer.</p></div>
+  <div class="qtools"><button class="primary" id="revealAll" type="button">Reveal all answers</button><button id="hideAll" type="button">Hide all</button></div>
+  <div class="quiz" id="quizList"></div>
+</div></section>
+
+<section id="challenge"><div class="wrap">
+  <div class="sec-head"><div class="kicker">🧠 Certification roleplay · Day 1</div><h2>The Owner's Challenge: the ideal answers</h2><p class="lede">24 rooms plus 3 garden cottages in Spain, family-run, full in July and August, struggling from November to March. Not every pain is what it looks like, and not every request has a "yes".</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>The owner said</th><th>The ideal answer</th></tr></thead>
+    <tbody>
+      <tr><td>"In November my website gets almost no bookings, and Booking always shows a lower price than mine."</td><td>Booking engine and website, Google Hotel free links and AmenitizBoost to win direct bookings.</td></tr>
+      <tr><td>"Guests arrive after midnight. Can you send them a door code?"</td><td>Online check-in with Chekin, plus a door code if the lock is supported (€2.49 per door per month).</td></tr>
+      <tr><td>"Half my guests message on WhatsApp, and last month's bill surprised me."</td><td>WhatsApp in the Unified Inbox: €0.02 per free-text message, first 1,000 a month free. Templates are billed by Meta.</td></tr>
+      <tr><td>"In the morning nobody knows which room ordered what at the bar."</td><td>Amenitiz POS charges orders straight to the room.</td></tr>
+      <tr><td>"Locals and day visitors get handwritten receipts."</td><td>Bills outside reservations: charge and invoice non-guests without a booking.</td></tr>
+      <tr><td>"Sell my 3 cottages three ways, and close the other options automatically."</td><td><b>The trap:</b> Room Link derives one level only. Set up the main combination and block the rest by hand.</td></tr>
+      <tr><td>"My bank gives me 0.8%. I'm not paying more."</td><td>Don't discount. Reframe on total cost: recovered no-shows, no reconciliation, no commission on direct.</td></tr>
+      <tr><td>"No robot talking to my guests, but my receptionist juggles three screens."</td><td>Unified Inbox to cut the screens, Ami in Manual mode so she stays in control, and Chekin for police registration.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><div class="kicker">Your next steps</div><h3 style="margin:10px 0 14px;font-size:24px;font-weight:800">Keep the momentum</h3>
+    <ul class="clean steps" style="gap:12px">
+      <li class="check"><i aria-hidden="true"></i>Place the hotelier in the three cuts before you pitch.</li>
+      <li class="check"><i aria-hidden="true"></i>Work on your elevator pitch for the whole journey.</li>
+      <li class="check"><i aria-hidden="true"></i>Share your best objection answers with your market.</li>
+    </ul></div>
+  <div><div class="kicker">Where to look</div><h3 style="margin:10px 0 14px;font-size:24px;font-weight:800">When in doubt</h3>
+    <ul class="clean">
+      <li>Battle cards and the objections file, for answers in your market's words.</li>
+      <li>The Help Center, for how each feature works step by step.</li>
+      <li>The product owner for each stage. Ask before you promise something you're not sure of.</li>
+    </ul></div>
+</div></footer>
+
+<script>
+const QUIZ=[
+ ['How does the PriceLabs integration work?','Two-way: we send booking data, PriceLabs sends prices back into the rates.','PriceLabs needs our bookings to price well, and its prices land straight in our rates.'],
+ ['A hotelier lowered one rate by mistake and was the cheapest in town for three weeks. What do you show him?','Derive the rates from the standard rate.','One change then moves every rate, so they can\'t drift apart.'],
+ ['Three cottages sold together, in pairs, or alone. Best setup?','Room Link one way only, then block the others by hand.','Room Link derives one level.'],
+ ['"My bank charges 0.8%. Why pay Amenitiz more?"','Reframe on total cost: no-shows recovered, time saved, no commission on direct.','Never discount the fee.'],
+ ['When does a scheduled pre-authorisation block the money?','On check-in day, and only when we hold the guest\'s card details.','No card details, no hold.'],
+ ['A guest wrote on Booking.com yesterday and WhatsApp today. Where does the reply go?','We pick which channel to reply on.','The Unified Inbox threads by guest, across channels.'],
+ ['Best way for reception to reply to WhatsApp from her phone?','The Amenitiz app: first 1,000 messages a month free, then €0.02 each.','A personal WhatsApp doesn\'t keep the hotel inbox up to date.'],
+ ['24 rooms, 26 guest doors: how much do remote locks cost?','Per door: 26 × €2.49 a month.','Locks are priced per door, not per unit.'],
+ ['Who has done online check-in by 4pm?','Reception sees the check-in status on the reservation.','Chekin\'s status comes back into Amenitiz.'],
+ ['Two couples share a booking and want to pay separately.','Split the bill at checkout, so each pays their share.','One invoice paid by one couple isn\'t a split.'],
+ ['"Can my restaurant POS be a payment method in Amenitiz POS?"','No: charge it to a room booking, or mark it as paid outside Amenitiz.','External terminals aren\'t payment methods.'],
+ ['Locals at lunch and day visitors renting bikes. Can we charge them?','Yes: bills outside reservations, no booking needed.','No €0 dummy bookings.'],
+ ['"Are you certified for fiscal invoicing in Europe?"','Yes, in Spain, France, Italy and Portugal.','Veri*Factu, NF525, SDI and Effatta, AT and Fatura-Recibo.'],
+ ['"My accountant uses Pennylane. Do you connect to it?"','No, but it will be possible soon.','Until then, the hotel exports its accounting entries as a file.'],
+ ['What does ADR mean on the dashboard?','Room revenue divided by the rooms actually sold.','Divided by all rooms available, it\'s RevPAR.']
+];
+const list=document.getElementById('quizList');
+list.innerHTML=QUIZ.map((q,i)=>`<div class="qi" role="button" tabindex="0" aria-expanded="false"><span class="n">${i+1}</span><span class="qq">${q[0]}</span><span class="aa"><span class="hint">Click to reveal the answer</span><span class="ans"><b>${q[1]}</b> ${q[2]}</span></span></div>`).join('');
+const toggle=(el,open)=>{el.classList.toggle('open',open);el.setAttribute('aria-expanded',String(el.classList.contains('open')));};
+list.querySelectorAll('.qi').forEach(el=>{
+  el.addEventListener('click',()=>toggle(el));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(el);}});
+});
+document.getElementById('revealAll').onclick=()=>list.querySelectorAll('.qi').forEach(el=>toggle(el,true));
+document.getElementById('hideAll').onclick=()=>list.querySelectorAll('.qi').forEach(el=>toggle(el,false));
+// highlight current section in the sticky nav
+const links=[...document.querySelectorAll('nav.stages a')];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>obs.observe(s));
+</script>
+
+</body></html>
